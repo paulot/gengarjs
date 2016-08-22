@@ -4,7 +4,7 @@ var program = require('commander');
 var electron_path = require('electron-prebuilt');
 var path = require('path')
 var proc = require('child_process')
-var  runner = path.join(__dirname, 'electron-entry.js');
+var runner = path.join(__dirname, 'runner.js');
 
 program.version('0.0.1')
        .description('GengarJS, an entrypoint to ElectronJS from the command line.')
