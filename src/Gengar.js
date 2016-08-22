@@ -1,12 +1,10 @@
-'use babel'
+#! /usr/bin/env node
 
-import commander from 'commander'
-import electron_path from 'electron-prebuilt'
-import path from 'path'
-import proc from 'child_process'
-
-let program = commander;
-let runner = path.join(__dirname, 'electron-entry.js');
+var program = require('commander');
+var electron_path = require('electron-prebuilt');
+var path = require('path')
+var proc = require('child_process')
+var  runner = path.join(__dirname, 'electron-entry.js');
 
 program.version('0.0.1')
        .description('GengarJS, an entrypoint to ElectronJS from the command line.')
@@ -15,12 +13,12 @@ program.version('0.0.1')
        .parse(process.argv);
 
 if (program.args.length) {
-  let electron_args = {
+  var electron_args = {
     headless: program.headless || false,
     url: program.args[0] || 'http://www.linkedin.com',
   };
 
-  let child = proc.spawn(electron_path, [runner].concat(JSON.stringify(electron_args)));
+  var child = proc.spawn(electron_path, [runner].concat(JSON.stringify(electron_args)));
 
   child.stdout.pipe(process.stdout);
   child.stderr.pipe(process.stderr);
